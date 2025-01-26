@@ -13,12 +13,12 @@ echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
 
 # Make database migrations
-echo "Making database migrations..."
-python3 manage.py makemigrations
+# echo "Making database migrations..."
+# python3 manage.py makemigrations
 
 # Apply database migrations
-echo "Applying database migrations..."
-python3 manage.py migrate
+# echo "Applying database migrations..."
+# python3 manage.py migrate
 
 # Run the Django development server
 echo "Starting the Django development server on port 5600..."
