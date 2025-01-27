@@ -1,19 +1,23 @@
-{% load static %}
+
+
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
-    <title>
-      {% block title %}
-        blog
-      {% endblock %}
-    </title>
-  </head>
-  <body>
-    {% block content %}
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
 
-    {% endblock %}
-  </body>
+	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
+		<div class="container mx-auto">
+			<section class="flex items-center justify-center h-screen">
+				<h1 class="text-5xl">Tailwind intergration done by:
+          QUDRAT ULLAH
+        </h1>
+			</section>
+		</div>
+	</body>
 </html>
