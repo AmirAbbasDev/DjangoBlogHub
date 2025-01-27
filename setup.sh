@@ -12,9 +12,15 @@ source env/bin/activate
 echo "Installing dependencies from requirements.txt..."
 pip install -r requirements.txt
 
+# Install project dependencies from requirements.txt
+echo "Installing tailwindcss dependencies..."
+cd theme/static_src
+npm install
+cd ../../
+
 # Make database migrations
-echo "Making database migrations..."
-python3 manage.py makemigrations
+# echo "Making database migrations..."
+# python3 manage.py makemigrations
 
 # Apply database migrations
 echo "Applying database migrations..."
