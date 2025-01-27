@@ -1,23 +1,27 @@
-
-
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
     <title>Django Tailwind</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		{% tailwind_css %}
-	</head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% tailwind_css %}
+  </head>
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
-				<h1 class="text-5xl">Tailwind intergration done by:
-          QUDRAT ULLAH
-        </h1>
-			</section>
-		</div>
-	</body>
+  <body class="bg-gray-50 leading-normal tracking-normal">
+    {% block navbar %}
+      {% include 'shared/navbar.html' %}
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block footer %}
+      {% include 'shared/footer.html' %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
+  </body>
 </html>

@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+{% load static tailwind_tags %}
 
 {% block title %}
   Home
 {% endblock %}
 
 {% block content %}
-  <h1>Welcome to Our Blog.</h1>
+  <div class="container mx-auto">
+    <section class="flex items-center justify-center h-screen">
+      <h1 class="text-5xl text-green-400 font-extrabold">Welcome to Home Page</h1>
+    </section>
+  </div>
 {% endblock %}
