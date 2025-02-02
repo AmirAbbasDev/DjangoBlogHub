@@ -11,4 +11,9 @@
       <h1 class="text-5xl text-gray-700 font-extrabold">Welcome {{ request.user.username }} to <span class="text-blue-700">T</span>ech<span class="text-blue-700">S</span>phere</h1>
     </section>
   </div>
+  {% include 'blog/shared/post_editor.html' %}
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'assets/js/post_editor_script.js' %}"></script>
 {% endblock %}

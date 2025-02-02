@@ -26,6 +26,13 @@
     "tailwindcss": "^3.4.0"
   },
   "dependencies": {
-    "flowbite": "^3.0.0"
-  }
+    "@tiptap/core": "^2.11.5",
+    "@tiptap/pm": "^2.11.5",
+    "@tiptap/starter-kit": "^2.11.5",
+    "flowbite": "^3.0.0",
+    "flowbite-typography": "^1.0.5"
+  },
+  "overrides": {
+    "prosemirror-model": "1.19.3"
+}
 }
