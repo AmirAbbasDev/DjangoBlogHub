@@ -7,7 +7,7 @@ from . import views
 # Defining the URL patterns
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    # path("", views.post_list, name="post_list"),
+    path("", views.PostListView.as_view(), name="index"),
+    path("create-post/", views.create_post_view, name="create-post"),
     # path("<int:id>/", views.post_detail, name="post_detail"),
 ]
