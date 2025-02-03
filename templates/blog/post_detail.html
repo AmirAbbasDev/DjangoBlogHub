@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static tailwind_tags %}
+
+{% block title %}
+  {{ post.title }}
+{% endblock %}
+
+{% block content %}
+  <div class="max-w-4xl mx-auto my-6">
+    <figure class="max-w-full">
+      <img class="w-full h-auto max-w-xl rounded-lg mx-auto" src="https://images.pexels.com/photos/4385547/pexels-photo-4385547.jpeg" />
+    </figure>
+
+    <h2 class="text-4xl font-extrabold dark:text-white">{{ post.title }}</h2>
+    <p class="my-4 text-lg text-gray-500">Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.</p>
+    <p class="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">{{ post.body }}</p>
+  </div>
+{% endblock %}

@@ -26,6 +26,7 @@
     "tailwindcss": "^3.4.0"
   },
   "dependencies": {
-    "flowbite": "^3.0.0"
+    "flowbite": "^3.0.0",
+    "flowbite-typography": "^1.0.5"
   }
 }

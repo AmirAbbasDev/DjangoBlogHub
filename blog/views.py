@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Post
 from django.http import Http404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from blog.forms import PostForm
 
@@ -69,10 +69,11 @@ def new_func(form, post):
     """
     post.slug = form.cleaned_data["title"].replace(" ", "-").lower()
 
+class ArticleDetailView(DetailView):
+    model = Post
+    template_name = "blog/post_detail.html"
+    context_object_name = "post"
 
-# def post_detail(request, id):
-#     try:
-#         post = Post.published.get(id=id)
-#     except Post.DoesNotExist:
-#         raise Http404("No Post found.")
-#     return render(request, "blog/post/detail.html", {"post": post})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
