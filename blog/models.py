@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -43,3 +42,22 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    content = models.TextField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """
+        Returns a string representation of the comment.
+
+        The format is "Comment by <username> on <post title>", where <username> is the username
+        of the user who made the comment and <post title> is the title of the post the comment
+        is associated with.
+        """
+
+        return f"Comment by {self.user} on {self.post.title}"

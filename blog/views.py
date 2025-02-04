@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
-from django.http import Http404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
-from blog.forms import PostForm
+from blog.forms import PostForm, CommentForm
+from .models import Comment
+import re
 
 
 # Display the blog homepage
@@ -65,15 +66,52 @@ def new_func(form, post):
     Creates the slug for a new blog post.
 
     This function takes a form instance and a post instance as arguments and creates the slug
-    for the post by replacing spaces with hyphens and converting the string to lowercase.
+    for the post by removing all special characters, replacing spaces with hyphens, and converting the string to lowercase.
     """
-    post.slug = form.cleaned_data["title"].replace(" ", "-").lower()
+    slug = re.sub(r"[^\w\s-]", "", form.cleaned_data["title"])
+    slug = re.sub(r"\s+", "-", slug)  # Replace spaces with hyphens
+    post.slug = slug.lower()
 
-class ArticleDetailView(DetailView):
-    model = Post
-    template_name = "blog/post_detail.html"
-    context_object_name = "post"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+def article_detail_view(request, id, slug):
+    """
+    Displays a blog post with its comments and allows authenticated users to leave new comments.
+
+    This view takes the post ID and slug as arguments and renders the post detail template with the post data,
+    a form for submitting a new comment, and a list of existing comments ordered by newest first.
+
+    If the request is a POST, the view validates the form and saves the new comment. If the user is not
+    authenticated, the view redirects to the login page.
+    """
+    # Fetch the post or return a 404 if it doesn't exist
+    post = get_object_or_404(Post, id=id, slug=slug)
+
+    # Initialize the comment form and fetch existing comments
+    form = CommentForm()
+    comments = Comment.objects.filter(post=post).order_by(
+        "-created_at"
+    )  # Order comments by newest first
+
+    # Handle POST requests (comment submission)
+    if request.method == "POST":
+        if not request.user.is_authenticated:
+            return redirect("login")  # Redirect to login if user is not authenticated
+
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.user = request.user
+            comment.save()
+            return redirect(
+                "post_detail", id=id, slug=slug
+            )  # Redirect to the same post after commenting
+
+    # Prepare context for rendering the template
+    context = {
+        "form": form,
+        "comments": comments,
+        "post": post,
+    }
+
+    return render(request, "blog/post_detail.html", context)
