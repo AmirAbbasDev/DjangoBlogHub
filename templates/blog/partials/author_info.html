@@ -1,0 +1,11 @@
+<div class="flex items-center mb-4">
+  <!-- Comment Author -->
+  <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold hover:text-blue-600 transition-colors duration-200">
+    <img class="mr-2 w-6 h-6 rounded-full" src="{{ author.profile_picture.url|default:'https://via.placeholder.com/150' }}" alt="{{ author.username }}" />
+    {{ author.username }}
+  </p>
+  <!-- Comment Date -->
+  <p class="text-sm text-gray-600 dark:text-gray-400">
+    <time pubdate datetime="{{ publish_date|date:'Y-m-d' }}" title="{{ publish_date|date:'F jS, Y' }}">{{ publish_date|date:'F jS, Y' }}</time>
+  </p>
+</div>

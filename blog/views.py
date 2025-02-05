@@ -58,7 +58,7 @@ def create_post_view(request):
         form = PostForm()
     # Render the post creation form
     context = {"form": form}
-    return render(request, "blog/post.html", context)
+    return render(request, "blog/create_post.html", context)
 
 
 def new_func(form, post):

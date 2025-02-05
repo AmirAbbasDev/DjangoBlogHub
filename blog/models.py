@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 # creating model manager
@@ -26,7 +27,7 @@ class Post(models.Model):
         null=False,
         blank=False,
     )
-    body = models.TextField()
+    body = CKEditor5Field("Body", config_name="default")
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
