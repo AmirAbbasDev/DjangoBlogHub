@@ -27,7 +27,49 @@
     {% endblock %}
 
     {% block content %}
+      <!-- Main Container -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Main Content (Left) -->
+        <main class="md:col-span-2 flex flex-col justify-center items-center min-h-screen p-4 gap-6">
+          {% block main %}
 
+          {% endblock %}
+        </main>
+
+        <!-- Sidebar (Right) -->
+        <aside class="bg-white p-6 rounded-lg shadow-md">
+          {% block sidebar %}
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Categories</h2>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-blue-600 hover:underline">Web Development</a>
+              </li>
+              <li>
+                <a href="#" class="text-blue-600 hover:underline">Django & Python</a>
+              </li>
+              <li>
+                <a href="#" class="text-blue-600 hover:underline">Tailwind CSS</a>
+              </li>
+              <li>
+                <a href="#" class="text-blue-600 hover:underline">SEO & Marketing</a>
+              </li>
+            </ul>
+
+            <h2 class="text-xl font-bold text-gray-800 mt-6 mb-4">Popular Posts</h2>
+            <ul class="space-y-3">
+              <li class="border-b pb-2">
+                <a href="#" class="text-blue-500 font-semibold hover:underline">Top 10 Tailwind CSS Tricks</a>
+              </li>
+              <li class="border-b pb-2">
+                <a href="#" class="text-blue-500 font-semibold hover:underline">How to Deploy a Django App</a>
+              </li>
+              <li>
+                <a href="#" class="text-blue-500 font-semibold hover:underline">Mastering Python for Backend Development</a>
+              </li>
+            </ul>
+          {% endblock %}
+        </aside>
+      </div>
     {% endblock %}
 
     {% block footer %}
