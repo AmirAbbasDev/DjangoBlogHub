@@ -2,7 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Django Tailwind</title>
+    <title>
+      {% block title %}
+        TechSphere
+      {% endblock %}
+    </title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -31,6 +35,7 @@
     {% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
 
     {% block script %}
 
