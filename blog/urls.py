@@ -9,4 +9,6 @@ urlpatterns = [
         name="post_detail",
     ),
     path("create-post/", views.create_post_view, name="create-post"),
+    #path for the delete user's own comment
+    path("delete-comment/<int:comment_id>/", views.delete_comment, name="delete_comment"), 
 ]
