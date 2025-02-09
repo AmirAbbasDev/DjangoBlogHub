@@ -6,9 +6,11 @@ urlpatterns = [
     path(
         "post/<int:id>/<slug:slug>/",
         views.article_detail_view,
-        name="post_detail",
+        name="post-detail",
     ),
     path("create-post/", views.create_post_view, name="create-post"),
-    #path for the delete user's own comment
-    path("delete-comment/<int:comment_id>/", views.delete_comment, name="delete_comment"), 
+    # path for the delete user's own comment
+    path(
+        "delete-comment/<int:comment_id>/", views.delete_comment, name="delete-comment"
+    ),
 ]

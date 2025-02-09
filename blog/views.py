@@ -104,7 +104,7 @@ def article_detail_view(request, id, slug):
             comment.user = request.user
             comment.save()
             return redirect(
-                "post_detail", id=id, slug=slug
+                "post-detail", id=id, slug=slug
             )  # Redirect to the same post after commenting
 
     # Prepare context for rendering the template
@@ -117,15 +117,16 @@ def article_detail_view(request, id, slug):
     return render(request, "blog/post_detail.html", context)
 
 
-
 # delete user's own comment
 @login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
 
     # Ensure the logged-in user owns the comment
-    if request.user == comment.user:
+    if request.user == comment.user or request.user.is_staff:
         comment.delete()
-        return redirect("post_detail", id=comment.post.id, slug=comment.post.slug)
+        return redirect("post-detail", id=comment.post.id, slug=comment.post.slug)
     else:
-        return redirect("post_detail", id=comment.post.id, slug=comment.post.slug)  # Redirect if not allowed to delete
+        return redirect(
+            "post-detail", id=comment.post.id, slug=comment.post.slug
+        )  # Redirect if not allowed to delete
