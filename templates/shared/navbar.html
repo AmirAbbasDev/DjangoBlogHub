@@ -20,7 +20,8 @@
 
           <div class="hidden md:flex items-center space-x-4">
           {% if request.user.is_authenticated %}
-          <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700">Logout</button>
+          <a href="{% url 'create-post' %}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Create a Post</a>
+          <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700">Sign Out</button>
 
           <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -47,7 +48,7 @@
           </div>
           {% else %}
           <!-- Login & Sign Up -->
-              <a href="{% url 'login' %}" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-100">Login</a>
+              <a href="{% url 'login' %}" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-100">Sign In</a>
               <a href="{% url 'register' %}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Sign Up</a>
               {% endif %}
             </div>
@@ -75,10 +76,10 @@
       {% if request.user.is_authenticated %}
       <form action="{% url 'logout' %}" method="post" class="min-w-full flex">
         {% csrf_token %}
-      <button type="submit" class="w-3/4 px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 mx-auto">Logout</button>
+      <button type="submit" class="w-3/4 px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 mx-auto">Sign Out</button>
       </form>
       {% else %}
-          <a href="{% url 'login' %}" class="w-3/4 px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-100">Login</a>
+          <a href="{% url 'login' %}" class="w-3/4 px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-100">Sign In</a>
           <a href="{% url 'register' %}" class="w-3/4 px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Sign Up</a>
       {% endif %}
     </div>

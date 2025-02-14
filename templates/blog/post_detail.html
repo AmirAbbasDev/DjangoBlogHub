@@ -9,6 +9,10 @@
   {{ form.media }}
 {% endblock %}
 
+{% block style %}
+  <link rel="stylesheet" href="{% static 'assets/css/article_detail.css' %}" />
+{% endblock %}
+
 {% block main %}
   <div class="mx-auto">
     <!-- Author and Date Section -->

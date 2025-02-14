@@ -7,11 +7,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["title", "body", "status"]
-        widgets = {
-            "body": CKEditor5Widget(
-                attrs={"class": "django_ckeditor_5"}, config_name="default"
-            )
-        }
+        body = CKEditor5Widget(
+            attrs={"class": "django_ckeditor_5"}, config_name="extends"
+        )
 
 
 class CommentForm(forms.ModelForm):

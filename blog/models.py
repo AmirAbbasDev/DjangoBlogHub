@@ -27,7 +27,7 @@ class Post(models.Model):
         null=False,
         blank=False,
     )
-    body = CKEditor5Field("Body", config_name="default")
+    body = CKEditor5Field(config_name="extends")
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
